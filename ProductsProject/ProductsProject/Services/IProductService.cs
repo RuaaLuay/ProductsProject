@@ -1,4 +1,5 @@
-﻿using ProductsProject.Models;
+﻿using ProductsProject.DTOs;
+using ProductsProject.Models;
 using System.Collections.Generic;
 
 namespace ProductsProject.Services
@@ -8,5 +9,7 @@ namespace ProductsProject.Services
         ProductEntity get(int Id);
         List<ProductEntity> getAll();
         void delete(int Id);
+        int create(CreateProductDto dto);
+        int update(UpdateProductDto dto);
     }
 }

@@ -35,9 +35,15 @@ namespace ProductsProject.Controllers
             return Ok("Deleted");
         }
         [HttpPost]
-        public IActionResult create(CreateProductDto dto)
+        public IActionResult Create([FromBody] CreateProductDto dto)
         {
-            return View();
+            return Ok(_productService.create(dto));
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] UpdateProductDto dto)
+        {
+            return Ok(_productService.update(dto));
         }
     }
 }
