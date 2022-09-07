@@ -1,5 +1,6 @@
 ﻿using ProductsProject.Data;
 using ProductsProject.DTOs;
+using ProductsProject.Exceptions;
 using ProductsProject.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace ProductsProject.Services
 
         public int create(CreateProductDto dto)
         {
+            var nameIsExist = _db.Products.Any(x => x.Name == dto.Name);
+            if (nameIsExist)
+            {
+                throw new DuplicateProductName();
+            }
             var product = new ProductEntity();
             product.Name = dto.Name;
             product.price = dto.Price;  

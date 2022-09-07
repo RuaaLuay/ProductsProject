@@ -24,9 +24,9 @@ namespace ProductsProject.Controllers
             return Ok(_productService.get(Id));
         }
         [HttpPut]
-        public IActionResult update(UpdateProductDto dto)
+        public IActionResult Update([FromBody] UpdateProductDto dto)
         {
-            return View();
+            return Ok(_productService.update(dto));
         }
         [HttpDelete]
         public IActionResult delete(int Id)
@@ -40,10 +40,5 @@ namespace ProductsProject.Controllers
             return Ok(_productService.create(dto));
         }
 
-        [HttpPut]
-        public IActionResult Update([FromBody] UpdateProductDto dto)
-        {
-            return Ok(_productService.update(dto));
-        }
     }
 }
