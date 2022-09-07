@@ -28,7 +28,7 @@ namespace store.Controllers
         public IEnumerable<Item> GetItems()
         {
             var x = _storeContext.Items.ToList();
-            return x;
+            return x; 
         }
 
         [HttpPost]
