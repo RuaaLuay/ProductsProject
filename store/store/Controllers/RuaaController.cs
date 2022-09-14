@@ -1,7 +1,10 @@
 ﻿using LINQtoCSV;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
+using RestSharp;
 using store.Model;
+using store.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,10 +28,23 @@ namespace store.Controllers
 
         // GET: api/<RuaaController>
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IActionResult GetItems()
         {
+            var baseUrl = "https://mocki.io/v1/";
+            var client = new RestClient(baseUrl);
+            var Request = new RestRequest("d4867d8b-b5d5-4a48-a4ab-79131b5809b8");
+            var res = client.Execute(Request);
             var x = _storeContext.Items.ToList();
-            return x; 
+            if (res.IsSuccessful)
+            {
+                var content = res.Content;
+                var mappedResult = JsonConvert.DeserializeObject<List<RestRes>>(content);
+                var ss = JsonConvert.SerializeObject(mappedResult);
+                return Ok(mappedResult);
+            }
+           // throw new Exception("mappedResult");
+            return BadRequest("unvalid Request");
+           // return Ok(x); 
         }
 
         [HttpPost]

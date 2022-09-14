@@ -60,3 +60,4 @@ C:\Users\JIT\source\repos\ProductsProject\store\store\obj\Debug\net5.0\store.gen
 C:\Users\JIT\source\repos\ProductsProject\store\store\obj\Debug\net5.0\ref\store.dll
 C:\Users\JIT\source\repos\ProductsProject\store\store\bin\Debug\net5.0\CsvHelper.dll
 C:\Users\JIT\source\repos\ProductsProject\store\store\bin\Debug\net5.0\LINQtoCSV.dll
+C:\Users\JIT\source\repos\ProductsProject\store\store\bin\Debug\net5.0\RestSharp.dll
